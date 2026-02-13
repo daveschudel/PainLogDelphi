@@ -18,37 +18,19 @@ jobs:
     runs-on: self-hosted
 
     steps:
-    - name: Diagnose MSBuild
-  shell: powershell
-  run: |
-    Write-Host "vswhere path:"
-    dir "${env:ProgramFiles(x86)}\Microsoft Visual Studio\Installer\vswhere.exe" -ErrorAction SilentlyContinue
-
-    Write-Host "`nSearching common MSBuild paths..."
-    $paths = @(
-      "${env:ProgramFiles(x86)}\Microsoft Visual Studio\2022\BuildTools\MSBuild\Current\Bin\MSBuild.exe",
-      "${env:ProgramFiles(x86)}\Microsoft Visual Studio\2022\Community\MSBuild\Current\Bin\MSBuild.exe",
-      "${env:ProgramFiles(x86)}\Microsoft Visual Studio\2022\Professional\MSBuild\Current\Bin\MSBuild.exe",
-      "${env:ProgramFiles(x86)}\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\MSBuild.exe",
-      "${env:ProgramFiles(x86)}\MSBuild\14.0\Bin\MSBuild.exe"
-    )
-
-    foreach ($p in $paths) {
-      if (Test-Path $p) { Write-Host "FOUND: $p" }
-    }
-
-    Write-Host "`nFull disk search (can take a bit)..."
-    Get-ChildItem "${env:ProgramFiles(x86)}\Microsoft Visual Studio" -Recurse -Filter MSBuild.exe -ErrorAction SilentlyContinue | Select-Object -First 20 FullName
+    
     
       - name: Checkout source
         uses: actions/checkout@v4
 
-      - name: Build Win64 Release
-        run: |
-          msbuild PainLogDelphi.dproj ^
-            /t:Build ^
-            /p:Config=Release ^
-            /p:Platform=Win64
+     - name: Build Win64 Release
+  shell: powershell
+  run: |
+    & "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\arm64\MSBuild.exe" `
+      "YourProjectName.dproj" `
+      /t:Build `
+      /p:Config=Release `
+      /p:Platform=Win64
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
