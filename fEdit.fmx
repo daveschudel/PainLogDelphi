@@ -1,0 +1,27 @@
+object EditForm: TEditForm
+  Left = 0
+  Top = 0
+  Caption = 'EditForm'
+  ClientHeight = 480
+  ClientWidth = 405
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  DesignerMasterStyle = 0
+  object ToolBar1: TToolBar
+    Size.Width = 405.000000000000000000
+    Size.Height = 40.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    object sbtnBack: TSpeedButton
+      Align = Left
+      Size.Width = 61.000000000000000000
+      Size.Height = 40.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'arrowlefttoolbutton'
+      Text = 'sbtnBack'
+      TextSettings.Trimming = None
+      OnClick = sbtnBackClick
+    end
+  end
+end

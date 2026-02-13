@@ -1,0 +1,227 @@
+object EditFrame: TEditFrame
+  Left = 0
+  Top = 0
+  Caption = 'Form1'
+  ClientHeight = 650
+  ClientWidth = 439
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  DesignerMasterStyle = 0
+  object RootLayout: TLayout
+    Align = Client
+    Size.Width = 439.000000000000000000
+    Size.Height = 650.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    object CardRect: TRectangle
+      Align = Center
+      Fill.Color = x66000000
+      Size.Width = 348.000000000000000000
+      Size.Height = 600.000000000000000000
+      Size.PlatformDefault = False
+      XRadius = 16.000000000000000000
+      YRadius = 16.000000000000000000
+      object Scroll: TVertScrollBox
+        Align = Client
+        Margins.Left = 12.000000000000000000
+        Margins.Top = 12.000000000000000000
+        Margins.Right = 12.000000000000000000
+        Margins.Bottom = 12.000000000000000000
+        Size.Width = 324.000000000000000000
+        Size.Height = 576.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        Viewport.Width = 324.000000000000000000
+        Viewport.Height = 576.000000000000000000
+        object DateLayout: TLayout
+          Align = Top
+          Margins.Bottom = 10.000000000000000000
+          Size.Width = 324.000000000000000000
+          Size.Height = 56.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 0
+          object Label1: TLabel
+            Align = Left
+            Size.Width = 120.000000000000000000
+            Size.Height = 56.000000000000000000
+            Size.PlatformDefault = False
+            Text = 'Label1'
+            TabOrder = 0
+          end
+          object deDate: TDateEdit
+            Date = 46063.000000000000000000
+            Align = Left
+            Position.X = 120.000000000000000000
+            Size.Width = 100.000000000000000000
+            Size.Height = 56.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 1
+          end
+          object TimeEdit: TTimeEdit
+            Time = 0.929783912037037100
+            Align = Right
+            Position.X = 224.000000000000000000
+            Size.Width = 100.000000000000000000
+            Size.Height = 56.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 2
+          end
+        end
+        object PainLevelLayout: TLayout
+          Align = Top
+          Margins.Bottom = 10.000000000000000000
+          Position.Y = 66.000000000000000000
+          Size.Width = 324.000000000000000000
+          Size.Height = 56.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 1
+          object Label2: TLabel
+            Align = Left
+            Size.Width = 120.000000000000000000
+            Size.Height = 56.000000000000000000
+            Size.PlatformDefault = False
+            Text = 'Label2'
+            TabOrder = 0
+          end
+          object tbPain: TTrackBar
+            Align = Client
+            CanParentFocus = True
+            Frequency = 1.000000000000000000
+            Max = 10.000000000000000000
+            Orientation = Horizontal
+            Size.Width = 204.000000000000000000
+            Size.Height = 19.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 1
+          end
+        end
+        object MedsLayout: TLayout
+          Align = Top
+          Margins.Bottom = 10.000000000000000000
+          Position.Y = 132.000000000000000000
+          Size.Width = 324.000000000000000000
+          Size.Height = 56.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 2
+          object Label3: TLabel
+            Align = Left
+            Size.Width = 120.000000000000000000
+            Size.Height = 56.000000000000000000
+            Size.PlatformDefault = False
+            Text = 'Label3'
+            TabOrder = 0
+          end
+          object cbMeds: TCheckBox
+            Align = Client
+            Size.Width = 204.000000000000000000
+            Size.Height = 56.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 1
+          end
+        end
+        object TempLayout: TLayout
+          Align = Top
+          Margins.Bottom = 10.000000000000000000
+          Position.Y = 198.000000000000000000
+          Size.Width = 324.000000000000000000
+          Size.Height = 56.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 3
+          object Label4: TLabel
+            Align = Left
+            Size.Width = 120.000000000000000000
+            Size.Height = 56.000000000000000000
+            Size.PlatformDefault = False
+            Text = 'Label4'
+            TabOrder = 0
+          end
+          object edTemp: TEdit
+            Touch.InteractiveGestures = [LongTap, DoubleTap]
+            Align = Client
+            TabOrder = 1
+            KeyboardType = NumberPad
+            FilterChar = '0123456789'
+            Size.Width = 204.000000000000000000
+            Size.Height = 56.000000000000000000
+            Size.PlatformDefault = False
+          end
+        end
+        object PressureLayout: TLayout
+          Align = Top
+          Margins.Bottom = 10.000000000000000000
+          Position.Y = 264.000000000000000000
+          Size.Width = 324.000000000000000000
+          Size.Height = 56.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 4
+          object Label5: TLabel
+            Align = Left
+            Size.Width = 120.000000000000000000
+            Size.Height = 56.000000000000000000
+            Size.PlatformDefault = False
+            Text = 'Label5'
+            TabOrder = 0
+          end
+          object edPressure: TEdit
+            Touch.InteractiveGestures = [LongTap, DoubleTap]
+            Align = Client
+            TabOrder = 1
+            KeyboardType = NumberPad
+            FilterChar = '0123456789'
+            Size.Width = 204.000000000000000000
+            Size.Height = 56.000000000000000000
+            Size.PlatformDefault = False
+          end
+        end
+        object NotesLayout: TLayout
+          Align = Top
+          Position.Y = 330.000000000000000000
+          Size.Width = 324.000000000000000000
+          Size.Height = 180.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 5
+          object memNotes: TMemo
+            Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+            DataDetectorTypes = []
+            Align = Client
+            Size.Width = 324.000000000000000000
+            Size.Height = 180.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 0
+            Viewport.Width = 324.000000000000000000
+            Viewport.Height = 180.000000000000000000
+          end
+        end
+        object ButtonLayout: TLayout
+          Align = Top
+          Margins.Top = 6.000000000000000000
+          Position.Y = 516.000000000000000000
+          Size.Width = 324.000000000000000000
+          Size.Height = 54.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 6
+          object btnCancel: TButton
+            Align = Left
+            Size.Width = 140.000000000000000000
+            Size.Height = 54.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 0
+            Text = 'Cancel'
+            TextSettings.Trimming = None
+          end
+          object btnSave: TButton
+            Align = Right
+            Position.X = 184.000000000000000000
+            Size.Width = 140.000000000000000000
+            Size.Height = 54.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 1
+            Text = 'Save'
+            TextSettings.Trimming = None
+          end
+        end
+      end
+    end
+  end
+end

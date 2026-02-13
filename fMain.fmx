@@ -1,0 +1,29 @@
+object MainForm: TMainForm
+  Left = 0
+  Top = 0
+  Caption = 'MainForm'
+  ClientHeight = 614
+  ClientWidth = 418
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
+  DesignerMasterStyle = 0
+  object ToolBar1: TToolBar
+    Size.Width = 418.000000000000000000
+    Size.Height = 40.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    object sbtnAdd: TSpeedButton
+      Align = Right
+      Position.X = 356.000000000000000000
+      Size.Width = 62.000000000000000000
+      Size.Height = 40.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'addtoolbutton'
+      Text = 'sbtnAdd'
+      TextSettings.Trimming = None
+      OnClick = sbtnAddClick
+    end
+  end
+end
