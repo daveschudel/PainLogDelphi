@@ -23,7 +23,7 @@ jobs:
       - name: Checkout source
         uses: actions/checkout@v4
 
- - name: Build Win64 Release
+- name: Build Win64 Release
   shell: powershell
   run: |
     $msbuild = "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\arm64\MSBuild.exe"
