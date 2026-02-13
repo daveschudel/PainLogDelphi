@@ -1,32 +1,46 @@
-name: Build Delphi
+name: Delphi Build
 
 on:
   push:
     branches: [ "main" ]
-  pull_request:
+  workflow_dispatch:
 
 jobs:
   build:
     runs-on: self-hosted
 
     steps:
-      - name: Checkout
-       / uses: actions/checkout@v4
-
-jobs:
-  build:
-    runs-on: self-hosted
-
-    steps:
-    
-    
       - name: Checkout source
         uses: actions/checkout@v4
 
-- name: Build Win64 Release
-  shell: powershell
-  run: |
-    $msbuild = "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\arm64\MSBuild.exe"
-    if (!(Test-Path $msbuild)) { throw "MSBuild not found at: $msbuild" }
+      - name: Show workspace contents (debug)
+        shell: powershell
+        run: |
+          Write-Host "Workspace:"
+          Get-ChildItem -Path $env:GITHUB_WORKSPACE
 
-    & $msbuild "PainLogDelphi.dproj" /t:Build /p:Config=Release /p:Platform=Win64
+      - name: Verify MSBuild exists
+        shell: powershell
+        run: |
+          $msbuild = "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\arm64\MSBuild.exe"
+          Write-Host "Checking MSBuild path:"
+          Write-Host $msbuild
+          if (!(Test-Path $msbuild)) {
+              throw "MSBuild not found at expected path."
+          }
+          Write-Host "MSBuild found."
+
+      - name: Build Win64 Release
+        shell: powershell
+        run: |
+          $msbuild = "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\arm64\MSBuild.exe"
+          & $msbuild "PainLogDelphi.dproj" `
+            /t:Build `
+            /p:Config=Release `
+            /p:Platform=Win64
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Win64-Release
+          path: Win64\Release\
