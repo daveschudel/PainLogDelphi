@@ -23,20 +23,10 @@ jobs:
       - name: Checkout source
         uses: actions/checkout@v4
 
-     - name: Build Win64 Release
+ - name: Build Win64 Release
   shell: powershell
   run: |
-    & "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\arm64\MSBuild.exe" `
-      "YourProjectName.dproj" `
-      /t:Build `
-      /p:Config=Release `
-      /p:Platform=Win64
+    $msbuild = "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\arm64\MSBuild.exe"
+    if (!(Test-Path $msbuild)) { throw "MSBuild not found at: $msbuild" }
 
-      - name: Upload artifact
-        uses: actions/upload-artifact@v4
-
-      - name: Upload artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: Win64-Release
-          path: Win64\Release\
+    & $msbuild "PainLogDelphi.dproj" /t:Build /p:Config=Release /p:Platform=Win64
