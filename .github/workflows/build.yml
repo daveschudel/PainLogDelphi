@@ -1,0 +1,28 @@
+name: Build Delphi Project
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  build:
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      - name: Build Win64 Release
+        run: |
+          msbuild PainLogDelphi.dproj ^
+            /t:Build ^
+            /p:Config=Release ^
+            /p:Platform=Win64
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Win64-Release
+          path: Win64\Release\
