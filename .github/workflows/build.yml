@@ -1,9 +1,8 @@
-name: Build Delphi Project
+name: Build Delphi
 
 on:
   push:
-    branches:
-      - main
+    branches: [ "main" ]
   pull_request:
 
 jobs:
@@ -11,15 +10,13 @@ jobs:
     runs-on: self-hosted
 
     steps:
-      - name: Checkout source
+      - name: Checkout
         uses: actions/checkout@v4
 
       - name: Build Win64 Release
+        shell: cmd
         run: |
-          msbuild PainLogDelphi.dproj ^
-            /t:Build ^
-            /p:Config=Release ^
-            /p:Platform=Win64
+          msbuild "PainLogDelphi.dproj" /t:Build /p:Config=Release /p:Platform=Win64
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
