@@ -7,30 +7,27 @@ on:
   workflow_dispatch:
 
 jobs:
-  build_win64:
+  build:
     runs-on: self-hosted
 
     steps:
-        - name: Add MSBuild to PATH
-        shell: powershell
-        run: |
-            $env:PATH += ";C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\arm64"
-            msbuild -version
-            
       - name: Checkout source
         uses: actions/checkout@v4
-
-      - name: Show workspace (debug)
-        shell: cmd
-        run: |
-          echo Workspace is: %GITHUB_WORKSPACE%
-          dir
 
       - name: Build Win64 Release
         shell: cmd
         run: |
+          REM Add MSBuild (ARM64) to PATH
+          set PATH=%PATH%;C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\arm64
+
+          REM Load Delphi environment
           call "C:\Program Files (x86)\Embarcadero\Studio\23.0\bin\rsvars.bat"
-          "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\arm64\MSBuild.exe" "PainLogDelphi.dproj" /t:Build /p:Config=Release /p:Platform=Win64
+
+          REM Verify msbuild is available
+          msbuild -version
+
+          REM Build project
+          msbuild "PainLogDelphi.dproj" /t:Build /p:Config=Release /p:Platform=Win64
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
